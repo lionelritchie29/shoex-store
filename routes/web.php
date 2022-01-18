@@ -19,7 +19,7 @@ Route::get('/', function ()
     return view('index');
 })->name('home');
 
-Route::prefix('/auth')->group(function() {
+Route::group(['prefix' => '/auth', 'middleware' => 'guest'], function() {
     Route::get('/register', [AuthController::class, 'showRegisterForm']);
     Route::get('/login', [AuthController::class, 'showLoginForm']);
     Route::post('/register', [AuthController::class, 'register'])->name('register');

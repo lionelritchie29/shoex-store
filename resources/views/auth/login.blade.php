@@ -10,16 +10,20 @@
         Sign in to your account
       </h2>
     </div>
-    <form class="mt-8 space-y-6" action="#" method="POST">
+    <form class="mt-8 space-y-6" action="{{ route('login') }}" method="POST">
+      @csrf
       <input type="hidden" name="remember" value="true">
       <div class="rounded-md shadow-sm space-y-4">
         <div>
           <label class="sr-only">Email address</label>
           <input name="email" type="email" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+          @error('email') <small class="text-red-500">{{ $message }}</small> @enderror
         </div>
+        
         <div>
           <label class="sr-only">Password</label>
           <input name="password" type="password" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
+          @error('password') <small class="text-red-500">{{ $message }}</small> @enderror
         </div>
       </div>
 

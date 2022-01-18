@@ -9,6 +9,7 @@
 </head>
 <body>
 <div class="min-h-screen bg-gray-100">
+  @include('_banner')
   <div class="bg-indigo-600 pb-32">
     @include('_navbar')
 

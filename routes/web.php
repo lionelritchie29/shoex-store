@@ -28,6 +28,8 @@ Route::group(['prefix' => '/auth', 'middleware' => 'guest'], function() {
 
 Route::group(['prefix' => '/products'], function() {
     Route::get('/{id}', [ProductController::class, 'show'])->name('products.show');
+    Route::get('/update/{id}', [ProductController::class, 'edit'])->name('products.edit')->middleware('auth');
+    Route::post('/update/{id}', [ProductController::class, 'update'])->name('products.update')->middleware('auth');
 });
 
 Route::group(['prefix' => '/transactions', 'middleware' => 'auth'], function() {

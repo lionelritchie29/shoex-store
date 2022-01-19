@@ -24,3 +24,7 @@ Route::group(['prefix' => '/auth', 'middleware' => 'guest'], function() {
     Route::post('/login', [AuthController::class, 'login'])->name('login');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+Route::group(['prefix' => '/products'], function() {
+    Route::get('/{id}', [ProductController::class, 'show'])->name('products.show');
+});

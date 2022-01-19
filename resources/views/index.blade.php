@@ -16,6 +16,17 @@
                     <p class="block text-sm font-medium text-gray-500 pointer-events-none">Rp. {{ number_format($product->price, 2) }}</p>
                 </div>
             </a>
+
+            @if (Auth::check() && Auth::user()->role == "ADMIN")
+                <div class="mt-2 flex justify-end space-x-1">
+                    <a href="/" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Update
+                    </a>
+                    <a href="/" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Delete
+                    </a>
+                </div>
+            @endif
         </li>
         @endforeach
     </ul>

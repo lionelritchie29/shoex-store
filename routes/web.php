@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,8 @@ Route::group(['prefix' => '/auth', 'middleware' => 'guest'], function() {
 
 Route::group(['prefix' => '/products'], function() {
     Route::get('/{id}', [ProductController::class, 'show'])->name('products.show');
+});
+
+Route::group(['prefix' => '/transactions', 'middleware' => 'auth'], function() {
+    Route::post('/create', [TransactionController::class, 'create'])->name('transactions.create');
 });

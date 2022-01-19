@@ -15,6 +15,10 @@
         <span class="block text-2xl font-bold mt-4">Rp. {{ number_format($product->price, 2) }}</span>
 
         <div class="mt-8">
+          <p class="text-gray-600">{{ $product->description }}</p>
+        </div>
+
+        <div class="mt-8">
           <span class="block">Size</span>
           <select name="size" class="w-full p-2 rounded border border-gray-200 outline-none">
             @foreach(explode(",", $product->size) as $size)

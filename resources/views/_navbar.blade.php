@@ -11,21 +11,9 @@
               Home
             </a>
             
-            @if(Auth::check())
+            @if(Auth::check() && Auth::user()->role == "MEMBER")
               <a href="#" class="text-white hover:bg-indigo-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium">
-                Team
-              </a>
-
-              <a href="#" class="text-white hover:bg-indigo-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium">
-                Projects
-              </a>
-
-              <a href="#" class="text-white hover:bg-indigo-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium">
-                Calendar
-              </a>
-
-              <a href="#" class="text-white hover:bg-indigo-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium">
-                Reports
+                My Transactions
               </a>
             @endif
           </div>

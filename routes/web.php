@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,7 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function ()
-{
-    return view('index');
-})->name('home');
+Route::get('/', [ProductController::class, 'index'])->name('home');
 
 Route::group(['prefix' => '/auth', 'middleware' => 'guest'], function() {
     Route::get('/register', [AuthController::class, 'showRegisterForm']);

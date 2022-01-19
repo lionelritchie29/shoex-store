@@ -37,5 +37,9 @@ class BrandSeeder extends Seeder
         Brand::create([
             'name' => 'Skechers'
         ]);
+
+        Brand::create([
+            'name' => 'Reebok'
+        ]);
     }
 }

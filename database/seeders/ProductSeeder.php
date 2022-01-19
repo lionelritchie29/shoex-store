@@ -67,5 +67,23 @@ class ProductSeeder extends Seeder
             'size' => '39,41,42,43,44,45,47',
             'brand_id' => 4
         ]);
+
+        Product::create([
+            'name' => "Reebok ENERGYLUX 3.0 Men's Running Shoes",
+            'price' => 699000,
+            'image_path' => 'products/7.jpg',
+            'description' => 'Jelajahi mil harian Anda dengan sepatu lari ini. Upper berbahan mesh bernapas membantu kaki tetap dingin. Bantalan responsif memberi Anda kenyamanan saat melangkah masuk dan pengendaraan yang nyaman.',
+            'size' => '38,39,41,42,43,44,45,47',
+            'brand_id' => 7
+        ]);
+
+        Product::create([
+            'name' => "Skechers GOrun Elevate - Orbiter Men's Running Shoes",
+            'price' => 899000,
+            'image_path' => 'products/8.jpg',
+            'description' => 'Nikmati latihan Anda dengan dorongan kenyamanan jangka panjang dengan sepatu Skechers GOrun Elevate (TM) - Orbiter. Sneaker latih bertali ini dilengkapi upper mesh atletik dengan sol dalam yang nyaman dan ber-Air Cooled Goga Mat (TM) dan midsole berbantalan ULTRA GO (R) yang ringan.',
+            'size' => '42,43,44,45,47',
+            'brand_id' => 6
+        ]);
     }
 }

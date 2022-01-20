@@ -10,6 +10,10 @@
             <a href="{{ route('home') }}" class="{{ Route::current()->getName() == 'home' ? 'bg-indigo-700' : '' }} text-white rounded-md py-2 px-3 text-sm font-medium">
               Home
             </a>
+
+            <a href="{{ route('products.create') }}" class="{{ Route::current()->getName() == 'products.create' ? 'bg-indigo-700' : '' }} text-white rounded-md py-2 px-3 text-sm font-medium">
+              Insert Product
+            </a>
             
             @if(Auth::check() && Auth::user()->role == "MEMBER")
               <a href="{{ route('transactions.list') }}" class="text-white hover:bg-indigo-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium {{ Route::current()->getName() == 'transactions.list' ? 'bg-indigo-700' : '' }}">

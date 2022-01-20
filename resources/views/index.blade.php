@@ -22,9 +22,13 @@
                     <a href="{{ route('products.edit', ['id' => $product->id]) }}" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         Update
                     </a>
-                    <a href="/" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Delete
-                    </a>
+                    <form action="{{ route('products.destroy', ['id' => $product->id]) }}" method="post">
+                        @csrf
+                        @method("delete")
+                        <button type="submit" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Delete
+                        </button>
+                    </form>
                 </div>
             @endif
         </li>

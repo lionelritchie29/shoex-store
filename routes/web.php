@@ -27,9 +27,12 @@ Route::group(['prefix' => '/auth', 'middleware' => 'guest'], function() {
 });
 
 Route::group(['prefix' => '/products'], function() {
+    Route::get('/create', [ProductController::class, 'create'])->name('products.create')->middleware('auth');
+    Route::post('/create', [ProductController::class, 'store'])->name('products.store')->middleware('auth');
     Route::get('/{id}', [ProductController::class, 'show'])->name('products.show');
     Route::get('/update/{id}', [ProductController::class, 'edit'])->name('products.edit')->middleware('auth');
     Route::post('/update/{id}', [ProductController::class, 'update'])->name('products.update')->middleware('auth');
+    Route::delete('/{id}', [ProductController::class, 'destroy'])->name('products.destroy')->middleware('auth');
 });
 
 Route::group(['prefix' => '/transactions', 'middleware' => 'auth'], function() {

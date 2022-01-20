@@ -34,4 +34,6 @@ Route::group(['prefix' => '/products'], function() {
 
 Route::group(['prefix' => '/transactions', 'middleware' => 'auth'], function() {
     Route::post('/create', [TransactionController::class, 'create'])->name('transactions.create');
+    Route::get('/', [TransactionController::class, 'index'])->name('transactions.list');
+    Route::get('/{id}', [TransactionController::class, 'show'])->name('transactions.show');
 });

@@ -12,4 +12,8 @@ class TransactionHeader extends Model
     protected $fillable = [
         'user_id'
     ];
+
+    public function detail(){
+        return $this->hasOne(TransactionDetail::class, 'transaction_id', 'id');
+    }
 }

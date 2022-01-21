@@ -23,8 +23,9 @@ Route::group(['prefix' => '/auth', 'middleware' => 'guest'], function() {
     Route::get('/login', [AuthController::class, 'showLoginForm']);
     Route::post('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/login', [AuthController::class, 'login'])->name('login');
-    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::group(['prefix' => '/products'], function() {
     Route::get('/create', [ProductController::class, 'create'])->name('products.create')->middleware('auth');

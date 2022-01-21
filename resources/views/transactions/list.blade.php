@@ -14,7 +14,13 @@
                   No
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Product
+                  Address
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Postal Code
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Card Number
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Date
@@ -25,15 +31,29 @@
               @foreach ($transactions as $transaction)
                 <tr class="{{ $loop->index == 0 ? 'bg-white' : 'bg-gray-50' }}" >
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  {{ $loop->index + 1 }}
+                    <a href="{{ route('transactions.show', ['id' => $transaction->id]) }}">
+                      {{ $loop->index + 1 }}
+                    </a> 
+                  </td> 
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <a href="{{ route('transactions.show', ['id' => $transaction->id]) }}">
+                      {{ $transaction->address }}
+                    </a> 
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     <a href="{{ route('transactions.show', ['id' => $transaction->id]) }}">
-                      {{ $transaction->detail->product->name }}
-                    </a>  
+                      {{ $transaction->postal_code }}
+                    </a> 
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {{ date('d-m-Y', strtotime($transaction->created_at)) }}
+                    <a href="{{ route('transactions.show', ['id' => $transaction->id]) }}">
+                      {{ $transaction->card_number }}
+                    </a> 
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <a href="{{ route('transactions.show', ['id' => $transaction->id]) }}">
+                      {{ date('d-m-Y', strtotime($transaction->created_at)) }}
+                    </a> 
                   </td>
                 </tr>
               @endforeach

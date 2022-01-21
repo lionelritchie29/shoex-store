@@ -8,7 +8,7 @@
         <img src={{ asset('storage/images/' . $product->image_path) }} alt={{ $product->name }}>
       </div>
 
-      <form class="w-1/2" method="POST" action="{{ route('transactions.create') }}">
+      <form class="w-1/2" method="POST" action="{{ route('carts.create') }}">
         @csrf
         <input type="hidden" name="product_id" value="{{ $product->id }}">
         <span class="block">{{ $product->brand->name }}</span>
@@ -36,7 +36,7 @@
         @if (Auth::check() && Auth::user()->role == "MEMBER")
         <div class="mt-8">
           <button type="submit" class="w-full justify-center inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Buy
+            Add to cart
           </button>
         </div>
         @endif

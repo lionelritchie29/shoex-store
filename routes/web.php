@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TransactionController;
 
@@ -40,4 +41,9 @@ Route::group(['prefix' => '/transactions', 'middleware' => 'auth'], function() {
     Route::post('/create', [TransactionController::class, 'create'])->name('transactions.create');
     Route::get('/', [TransactionController::class, 'index'])->name('transactions.list');
     Route::get('/{id}', [TransactionController::class, 'show'])->name('transactions.show');
+});
+
+Route::group(['prefix' => '/carts', 'middleware' => 'auth'], function() {
+    Route::get('/', [CartController::class, 'index'])->name('carts.index');
+    Route::post('/create', [CartController::class, 'create'])->name('carts.create');
 });

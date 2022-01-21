@@ -21,6 +21,9 @@
               <a href="{{ route('transactions.list') }}" class="text-white hover:bg-indigo-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium {{ Route::current()->getName() == 'transactions.list' ? 'bg-indigo-700' : '' }}">
                 My Transactions
               </a>
+              <a href="{{ route('carts.index') }}" class="text-white hover:bg-indigo-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium {{ Route::current()->getName() == 'transactions.list' ? 'bg-indigo-700' : '' }}">
+                My Cart
+              </a>
             @endif
           </div>
         </div>

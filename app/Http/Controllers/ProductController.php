@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index() {
-        $products = Product::all();
+        $products = Product::paginate(8)->withQueryString();
         return view('index')->with('products', $products);
     }
 

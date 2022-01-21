@@ -34,4 +34,7 @@
         </li>
         @endforeach
     </ul>
+    <div class="w-100 mt-10">
+        {{$products->links()}}
+    </div>
 @endsection

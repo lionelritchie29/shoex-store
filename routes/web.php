@@ -42,6 +42,7 @@ Route::group(['prefix' => '/transactions', 'middleware' => 'auth'], function() {
     Route::get('/', [TransactionController::class, 'index'])->name('transactions.list');
     Route::get('/{id}', [TransactionController::class, 'show'])->name('transactions.show');
 });
+Route::get('/checkout', [TransactionController::class, 'checkout'])->name('transactions.checkout');
 
 Route::group(['prefix' => '/carts', 'middleware' => 'auth'], function() {
     Route::get('/', [CartController::class, 'index'])->name('carts.index');

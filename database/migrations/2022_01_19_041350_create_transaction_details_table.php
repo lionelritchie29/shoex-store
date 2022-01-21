@@ -22,7 +22,7 @@ class CreateTransactionDetailsTable extends Migration
 
             $table->foreign('transaction_id')->references('id')->on('transaction_headers');
             $table->foreign('product_id')->references('id')->on('products');
-            $table->primary(['transaction_id', 'product_id']);
+            $table->primary(['transaction_id', 'product_id', 'size']);
         });
     }
 

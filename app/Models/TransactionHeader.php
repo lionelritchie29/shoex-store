@@ -10,7 +10,13 @@ class TransactionHeader extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id'
+        'user_id',
+        'address',
+        'postal_code',
+        'card_mm',
+        'card_yy',
+        'card_cvv',
+        'card_number'
     ];
 
     public function detail(){

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Product;
 use App\Models\TransactionDetail;
 use App\Models\TransactionHeader;
@@ -11,20 +12,39 @@ use Illuminate\Support\Facades\Auth;
 class TransactionController extends Controller
 {
     public function create(Request $request) {
+        $request->validate([
+            'address' => 'required',
+            'postal_code' => 'required|numeric',
+            'card_yy' => 'required|numeric|between:2021,2050',
+            'card_mm' => 'required|numeric|between:1,12',
+            'card_cvv' => 'required|numeric',
+            'card_number' => 'required'
+        ]);
+
         $user = Auth::user();
         $header = TransactionHeader::create([
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'address' => $request->input('address'),
+            'postal_code' => $request->input('postal_code'),
+            'card_mm' => $request->input('card_mm'),
+            'card_yy' => $request->input('card_yy'),
+            'card_cvv' => $request->input('card_cvv'),
+            'card_number' => $request->input('card_number')
         ]);
 
-        TransactionDetail::create([
-            'transaction_id' => $header->id,
-            'product_id' => $request->input('product_id'),
-            'size' => $request->input('size'),
-            'quantity' => $request->input('quantity')
-        ]);
+        $carts = Cart::where('user_id', $user->id)->get();
 
-        // todo: redirect ke detail transactionnya pny dx
-        return redirect()->route('home')->with('success', 'Transaction created successfully!');
+        foreach($carts as $cart) {
+            TransactionDetail::create([
+                'transaction_id' => $header->id,
+                'product_id' => $cart->product->id,
+                'size' => $cart->size,
+                'quantity' => $cart->quantity
+            ]);
+        }
+
+        Cart::where('user_id', $user->id)->delete();
+        return redirect()->route('transactions.list')->with('success', 'Transaction created successfully!');
     }
 
     public function index() {
@@ -35,5 +55,12 @@ class TransactionController extends Controller
     public function show($id){
         $transaction = TransactionDetail::where('transaction_id', $id)->first();
         return view('transactions.show')->with('transaction', $transaction);
+    }
+
+    public function checkout() {
+        $user = Auth::user(); 
+        $carts = Cart::where('user_id', $user->id)->get();
+        if (count($carts) == 0) return redirect()->route('carts.index');
+        return view('transactions.checkout');
     }
 }

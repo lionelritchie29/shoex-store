@@ -72,9 +72,9 @@
 
   <div class="text-right mt-2 mr-3 text-gray-500 font-semibold">
     Total Price: Rp. {{ number_format($totalPrice, 2) }}
-    <button class="ml-3 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+    <a href="{{ route('transactions.checkout') }}" class="ml-3 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
       Checkout
-    </button>
+    </a>
   </div>
   @endif
 @endsection

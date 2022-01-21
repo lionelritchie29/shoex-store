@@ -24,8 +24,10 @@ class CartController extends Controller
     public function create(Request $request) {
         $user = Auth::user();
 
-        $existingCart = Cart::where(['user_id' => $user->id, 'product_id' => $request->input('product_id')])->first();
-        
+        $existingCart = Cart::where(
+            ['user_id' => $user->id, 'size' => $request->input('size'), 'product_id' => $request->input('product_id')])
+            ->first();
+
         if ($existingCart) {
             $newQty = $existingCart->quantity + $request->input('quantity');
             $existingCart = Cart::where(['user_id' => $user->id, 'product_id' => $request->input('product_id')])->update(

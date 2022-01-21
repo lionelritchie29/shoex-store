@@ -19,7 +19,8 @@ class CreateTransactionHeadersTable extends Migration
             $table->string('address');
             $table->string('card_number');
             $table->string('card_mm');
-            $table->string('catd_yy');
+            $table->string('card_yy');
+            $table->string('card_cvv');
             $table->string('postal_code');
             $table->timestamps();
 

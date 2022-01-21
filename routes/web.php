@@ -47,4 +47,5 @@ Route::get('/checkout', [TransactionController::class, 'checkout'])->name('trans
 Route::group(['prefix' => '/carts', 'middleware' => 'auth'], function() {
     Route::get('/', [CartController::class, 'index'])->name('carts.index');
     Route::post('/create', [CartController::class, 'create'])->name('carts.create');
+    Route::delete('/delete', [CartController::class, 'delete'])->name('carts.delete');
 });

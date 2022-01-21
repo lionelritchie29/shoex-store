@@ -57,9 +57,15 @@
                     Rp. {{ number_format($cart->quantity * $cart->product->price, 2) }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    <button class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                      Delete
-                    </button>
+                    <form action="{{ route('carts.delete') }}" method="POST">
+                      @csrf
+                      @method('delete')
+                      <input type="hidden" name="product_id" value="{{ $cart->product->id }}">
+                      <input type="hidden" name="size" value="{{ $cart->size }}">
+                      <button type="submit" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Delete
+                      </button>
+                    </form>
                   </td>
                 </tr>
               @endforeach

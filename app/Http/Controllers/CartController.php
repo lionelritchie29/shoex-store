@@ -47,4 +47,14 @@ class CartController extends Controller
             return redirect()->back()->with('success', 'Product added to cart successfully');
         }
     }
+
+    public function delete(Request $request) {
+        $user = Auth::user();
+        Cart::where([
+            'user_id' => $user->id, 
+            'product_id' => $request->input('product_id'),
+            'size' => $request->input('size') 
+        ])->delete();
+        return redirect()->back()->with('success', 'Item deleted succesfully');
+    }
 }

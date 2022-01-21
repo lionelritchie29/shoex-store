@@ -53,8 +53,8 @@ class TransactionController extends Controller
     }
 
     public function show($id){
-        $transaction = TransactionDetail::where('transaction_id', $id)->first();
-        return view('transactions.show')->with('transaction', $transaction);
+        $detailTransactions = TransactionDetail::where('transaction_id', $id)->get();
+        return view('transactions.show')->with('detailTransactions', $detailTransactions);
     }
 
     public function checkout() {

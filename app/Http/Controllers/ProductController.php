@@ -8,8 +8,11 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
         $products = Product::all();
+        if($request->exists('search')){
+            $products = Product::where('name', 'like', '%' . $request->get('search') . '%')->get();
+        }
         return view('index')->with('products', $products);
     }
 

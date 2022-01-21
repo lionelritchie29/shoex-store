@@ -3,6 +3,7 @@
 @section('header', "Transaction Detail")
 
 @section('body')
+    @foreach ($detailTransactions as $transaction)
     <div class="flex items-center">
       <div class="w-1/3">
         <img src={{ asset('storage/images/' . $transaction->product->image_path) }} alt={{ $transaction->product->name }}>
@@ -24,4 +25,5 @@
         </div>
       </div>
     </div>
+    @endforeach
 @endsection

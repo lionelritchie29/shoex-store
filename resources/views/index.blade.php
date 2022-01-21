@@ -3,6 +3,12 @@
 @section('header', 'Home')
 
 @section('body')
+    <form class="pb-8" action="{{ route('home') }}" method="GET">
+      <div>
+        <label>Search Product</label>
+        <input name="search" type="text" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mt-2" placeholder="Name" />
+      </div>
+    </form>
     <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
         @foreach($products as $product)
         <li class="relative">
